@@ -57,7 +57,7 @@ namespace oggextract
 
                             if (header_type == 2) // new page
                             {
-                                writer = new BinaryWriter(new FileStream(@"output\0x" + page_position.ToString("X") + ".ogg", FileMode.Create), Encoding.ASCII);
+                                writer = new BinaryWriter(new FileStream(Path.Combine("output", "0x" + page_position.ToString("X") + ".ogg"), FileMode.Create), Encoding.ASCII);
                                 writer.Write(page);
                             }
                             else if (header_type == 4 || header_type == 5) // end of page
@@ -79,7 +79,7 @@ namespace oggextract
                         }
                     }
                 }
-                catch (EndOfStreamException e)
+                catch (EndOfStreamException )
                 {
                     reader.Close();
                     Console.WriteLine("Done! " + count + " files extracted.");
